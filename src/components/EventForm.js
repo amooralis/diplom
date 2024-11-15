@@ -2,11 +2,9 @@ import React, {useEffect, useState} from "react";
 import "./styles/EventForm.css";
 import "./styles/Buttons.css";
 import UploadingSponsors from "./UploadingSponsors";
+import CreateSchedule from "./CreateSchedule";
 
 function EventForm({eventData, setEventData, updateEventData}) {
-    // const [eventData, setEventData] = useState({ schedule: {} }); // Расписание в формате { "09 апреля": ["событие1", "событие2"] }
-    const [newScheduleDate, setNewScheduleDate] = useState("");
-    const [newScheduleItem, setNewScheduleItem] = useState("");
 
     useEffect(() => {
         const savedData = localStorage.getItem("eventData");
@@ -42,33 +40,7 @@ function EventForm({eventData, setEventData, updateEventData}) {
         }
     };
 
-    const addScheduleItem = () => {
-        if (newScheduleDate.trim() === "" || newScheduleItem.trim() === "") return;
 
-        setEventData((prevData) => {
-            const updatedSchedule = {...prevData.schedule};
-
-            if (!updatedSchedule[newScheduleDate]) {
-                updatedSchedule[newScheduleDate] = [];
-            }
-
-            updatedSchedule[newScheduleDate].push(newScheduleItem);
-
-            return {...prevData, schedule: updatedSchedule};
-        });
-
-        setNewScheduleItem("");
-    };
-
-
-    const deleteScheduleDay = (date) => {
-        setEventData((prevData) => {
-            const updatedSchedule = {...prevData.schedule};
-            delete updatedSchedule[date]; // Удаляем выбранную дату и её события
-
-            return {...prevData, schedule: updatedSchedule};
-        });
-    };
 
     const handleGeneratePage = (e) => {
         e.preventDefault();
@@ -141,14 +113,23 @@ function EventForm({eventData, setEventData, updateEventData}) {
                     />
                 </label>
                 <label>
-                    <span>Дата:</span>
+                    <span>Дата начала:</span>
                     <input
-                        type="date"
-                        name="date"
-                        value={eventData.date}
+                        type="text"
+                        name="dateStart"
+                        value={eventData.dateStart}
                         onChange={handleChange}
                     />
                 </label>
+                    <label>
+                        <span>Дата окончания:</span>
+                        <input
+                            type="text"
+                            name="dateEnd"
+                            value={eventData.dateEnd}
+                            onChange={handleChange}
+                        />
+                    </label>
                 <label>
                     <span>Место:</span>
                     <input
@@ -176,49 +157,8 @@ function EventForm({eventData, setEventData, updateEventData}) {
                     />
                 </label>
                 </div>
-                <div className="form__container">
-                    <div className="create__schedule__add__items">
-                        <h3 className="form__title">Расписание</h3>
+                <CreateSchedule eventData={eventData} setEventData={setEventData}/>
 
-                        <input
-                            type="text"
-                            placeholder="Дата (например, 09 апреля)"
-                            value={newScheduleDate}
-                            onChange={(e) => setNewScheduleDate(e.target.value)}
-                        />
-                        <div className="create__schedule__add__item">
-                            <input
-                                type="text"
-                                placeholder="Событие (например, 10:00-11:00 - Регистрация участников)"
-                                value={newScheduleItem}
-                                onChange={(e) => setNewScheduleItem(e.target.value)}
-                            />
-                            <button type="button" className="button--add" onClick={addScheduleItem}>
-                                добавить в расписание
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="schedule__form__preview">
-                        {Object.entries(eventData.schedule).map(([date, events]) => (
-                            <div key={date} className="schedule__day">
-                                <div className="schedule__form__preview__firstline">
-                                    <h3>{date}</h3>
-                                    <button
-                                        type="button"
-                                        className="button--delete"
-                                        onClick={() => deleteScheduleDay(date)}>x
-                                    </button>
-                                </div>
-                                <ul>
-                                    {events.map((event, index) => (
-                                        <li key={index}>{event}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
                 <div className="form__container">
                     <h3 className="form__title">Загрузка изображений для заголовка</h3>
                     <div className="upload__image">
@@ -257,6 +197,10 @@ function EventForm({eventData, setEventData, updateEventData}) {
                 </div>
 
                 <UploadingSponsors eventData={eventData} setEventData={setEventData}/>
+
+                <div className="form__container">
+
+                </div>
 
                 <button type="button" onClick={handleGeneratePage}>
                     Generate Page

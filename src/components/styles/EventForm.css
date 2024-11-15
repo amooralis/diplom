@@ -13,7 +13,7 @@
 .form__container {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
     border-top: 2px solid #fff;
     gap: 15px;
 }
@@ -66,10 +66,11 @@
 .create__schedule__add__item{
     display: flex;
 }
+
 .create__schedule__add__item button{
     width: 100px;
     margin-left: 20px;
-}.
+}
 
 .schedule__list {
     list-style: none;
@@ -88,9 +89,8 @@
     white-space: normal; /* Разрешает перенос текста на новую строку */
 }
 
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 .schedule__form__preview {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;

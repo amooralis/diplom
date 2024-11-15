@@ -10,7 +10,8 @@ function App() {
         const savedData = localStorage.getItem("eventData");
         return savedData ? JSON.parse(savedData) : {
             title: "",
-            date: "",
+            dateStart: "",
+            dateEnd: "",
             location: "",
             description: "",
             organizers: "",
