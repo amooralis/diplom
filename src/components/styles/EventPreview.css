@@ -1,0 +1,13 @@
+.event-preview {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.event-preview h3 {
+    margin-top: 0;
+}
+
+.event-preview ul {
+    list-style-type: none;
+    padding: 0;
+}

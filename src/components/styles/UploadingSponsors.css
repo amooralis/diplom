@@ -1,0 +1,87 @@
+
+.sponsor-add-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.sponsor__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.sponsor__card {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    transition: box-shadow 0.3s;
+}
+
+.sponsor__card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sponsor__card img {
+    width: 100px;
+    height: 35px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.sponsor__card a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    word-break: break-all;
+}
+
+.sponsor__card a:hover {
+    text-decoration: underline;
+}
+
+.sponsor__card input[type="file"],
+.sponsor__card input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 0.9em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+
+
+/* Фиксация кнопки удаления */
+.sponsor__card .remove__btn {
+    margin-top: auto; /* Отправляет кнопку вниз */
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.sponsor__card .remove__btn:hover {
+    background-color: #c82333;
+}
+
+
+.sponsor__card .remove__btn:hover {
+    background-color: #c82333;
+}
