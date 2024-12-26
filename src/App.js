@@ -18,7 +18,9 @@ function App() {
             schedule: {},
             fartukImgUrl: null,
             logo: null,
-            sponsors:[]
+            sponsors:[],
+            needRegistration: false,
+            coordinates:{x: "", y: ""}
         };
     });
 

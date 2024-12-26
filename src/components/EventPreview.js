@@ -2,7 +2,10 @@ import React from "react";
 import "./styles/EventPreview.css";
 
 function EventPreview({ eventData}) {
-    const {fartukImgUrl, logo, title, dateStart, dateEnd, location, description, organizers, schedule, sponsors} = eventData
+    const {fartukImgUrl, logo, title, dateStart, dateEnd, location, description, organizers, schedule, sponsors} = eventData;
+
+
+
     return (
         <div className="preview">
             {fartukImgUrl && <img className="preview__fartuk" src={fartukImgUrl} alt="fartuk" />}
@@ -21,7 +24,17 @@ function EventPreview({ eventData}) {
             {schedule && schedule.length > 0 && (
                 <></>
             )}
-            {sponsors && <p><strong>Спонсоры:</strong> {sponsors}</p>}
+            {sponsors && <p><strong>Спонсоры:</strong></p>}
+            {sponsors &&
+                sponsors.map((sponsor)=>(
+                    <div>
+                        <a>{sponsor.link}</a>
+                    </div>
+                ))
+            }
+
+
+
 
         </div>
     );

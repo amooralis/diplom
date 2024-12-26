@@ -4,22 +4,12 @@
   box-sizing: border-box;
 }
 
-
-/*.App {*/
-/*  text-align: center;*/
-/*  font-family: Arial, sans-serif;*/
-/*  width: 100vw;*/
-/*  height: 100vh;*/
-/*}*/
-
-
-/*.content {*/
-/*  display: grid;*/
-/*  grid-template-columns: 1fr 1fr;*/
-/*  padding: 20px;*/
-/*  width: 100vw;*/
-/*  height: 100%;*/
-/*}*/
+:root {
+  --main--bg-color: skyblue;
+  --primary-color: #007bff; /* Основной цвет */
+  --primary-color-dark: #0056b3; /* Темный вариант */
+  --secondary-color: #fff; /* Вторичный цвет */
+}
 
 .App {
 
@@ -27,6 +17,7 @@
   flex-direction: column;
   min-height: 100vh; /* Контейнер занимает всю высоту экрана */
   min-width: 850px;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 .content {

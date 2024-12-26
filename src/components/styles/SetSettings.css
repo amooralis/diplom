@@ -1,0 +1,31 @@
+
+.form__container__settings {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-top: 2px solid var(--secondary-color);
+    gap: 15px;
+}
+
+
+
+.checkbox__group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox__group label {
+    display: flex;
+    align-items: center; /* Выравнивание текста по вертикали относительно чекбокса */
+    gap: 10px; /* Расстояние между чекбоксом и текстом */
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+    /*width: 250px;*/
+}
+
+
+.checkbox__group label span {
+    line-height: 1; /* Устраняет возможные смещения текста */
+}

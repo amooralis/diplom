@@ -1,7 +1,7 @@
 .footer {
     background-color: #282c34;
     padding: 20px;
-    color: white;
+    color: var(--secondary-color);
     text-align: center;
     width: 100%;
     /* Убедитесь, что bottom: 0; убран, он не требуется здесь */

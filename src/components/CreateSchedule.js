@@ -1,4 +1,3 @@
-import "./styles/UploadingSponsors.css";
 import "./styles/Buttons.css";
 import "./styles/EventForm.css";
 import React, {useState} from "react";
