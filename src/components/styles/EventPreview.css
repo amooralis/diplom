@@ -76,7 +76,7 @@
 .event-preview__details p {
   margin: 10px 0;
   font-size: 1em;
-  color: #555;
+  color: var(--primary-color, #333);
 }
 
 .event-preview__schedule {

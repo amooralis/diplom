@@ -268,7 +268,9 @@ function EventForm({ eventData, setEventData, updateEventData }) {
                 </td>
               </tr>
               <tr>
-                <td className="color-table__label">Цвет акцентов (заголовки, ссылки):</td>
+                <td className="color-table__label">
+                  Цвет акцентов (заголовки, ссылки):
+                </td>
                 <td>
                   <input
                     type="color"

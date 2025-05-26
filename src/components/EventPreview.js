@@ -92,22 +92,29 @@ function EventPreview({ eventData }) {
           <div className="event-preview__sponsors-list">
             {sponsors.map((sponsor, index) => (
               <div key={index} className="event-preview__sponsor">
-                {sponsor.image && (
-                  <img
-                    src={sponsor.image}
-                    alt={`Sponsor ${index + 1}`}
-                    className="event-preview__sponsor-image"
-                  />
-                )}
-                {sponsor.link && (
+                {sponsor.link ? (
                   <a
                     href={sponsor.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="event-preview__sponsor-link"
                   >
-                    {sponsor.link}
+                    {sponsor.image && (
+                      <img
+                        src={sponsor.image}
+                        alt={`Sponsor ${index + 1}`}
+                        className="event-preview__sponsor-image"
+                      />
+                    )}
                   </a>
+                ) : (
+                  sponsor.image && (
+                    <img
+                      src={sponsor.image}
+                      alt={`Sponsor ${index + 1}`}
+                      className="event-preview__sponsor-image"
+                    />
+                  )
                 )}
               </div>
             ))}
