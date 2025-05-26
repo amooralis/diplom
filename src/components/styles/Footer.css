@@ -1,8 +1,8 @@
 .footer {
-    background-color: #282c34;
-    padding: 20px;
-    color: var(--secondary-color);
-    text-align: center;
-    width: 100%;
-    /* Убедитесь, что bottom: 0; убран, он не требуется здесь */
+  background-color: #282c34;
+  padding: 20px;
+  color: var(--background-color);
+  text-align: center;
+  width: 100%;
+  /* Убедитесь, что bottom: 0; убран, он не требуется здесь */
 }

@@ -8,11 +8,10 @@
   --main--bg-color: skyblue;
   --primary-color: #007bff; /* Основной цвет */
   --primary-color-dark: #0056b3; /* Темный вариант */
-  --secondary-color: #fff; /* Вторичный цвет */
+  --background-color: #fff; /* Вторичный цвет */
 }
 
 .App {
-
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Контейнер занимает всю высоту экрана */
@@ -28,7 +27,7 @@
   min-width: 850px;
 }
 
-.preview{
+.preview {
   display: flex;
   flex-direction: column;
 }
@@ -40,6 +39,3 @@
   max-width: 50vw;
   width: 50vw;
 }
-
-
-

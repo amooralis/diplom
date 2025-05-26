@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-top: 2px solid var(--secondary-color);
+  border-top: 2px solid var(--background-color);
   gap: 15px;
 }
 
@@ -47,6 +47,22 @@
   border: none;
 }
 
+.color_picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.color-input {
+  width: 50px; /* Ширина для цветового поля */
+  height: 50px; /* Высота для цветового поля */
+  margin-right: 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .form input[type="checkbox"] {
   appearance: none; /* Убираем стандартный стиль */
   -webkit-appearance: none;
@@ -54,7 +70,7 @@
   height: 30px;
   border: 3px solid var(--primary-color);
   border-radius: 4px; /* Закругление */
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
   cursor: pointer;
   position: relative;
   display: inline-block;
@@ -64,17 +80,17 @@
 
 /* Состояние при выборе */
 .form input[type="checkbox"]:checked {
-  /*background-color: var(--secondary-color);*/
+  /*background-color: var(--background-color);*/
   background-color: var(
     --primary-color
   ); /* Цвет фона для выбранного состояния */
-  border-color: var(--secondary-color);
+  border-color: var(--background-color);
 }
 
 /* Псевдоэлемент для символа */
 .form input[type="checkbox"]:checked::after {
   content: "✔"; /* ◎●✔/
-    color: var(--secondary-color); /* Цвет символа */
+    color: var(--background-color); /* Цвет символа */
   font-size: 18px;
   position: absolute;
   top: 50%;
@@ -82,7 +98,7 @@
   transform: translate(-50%, -50%);
   font-weight: bold;
   line-height: 1;
-  color: var(--secondary-color);
+  color: var(--background-color);
 }
 
 .create__description {
@@ -200,7 +216,7 @@
   border: none;
   border-radius: 5px;
   background-color: var(--primary-color); /* Цвет кнопки */
-  color: var(--secondary-color);
+  color: var(--background-color);
   transition: background-color 0.3s ease;
 }
 
@@ -245,6 +261,28 @@
   flex-direction: column;
 }
 
-.coordinates input{
-    margin: 5px;
+.coordinates input {
+  margin: 5px;
+}
+
+.color-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.color-table__label {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: bold;
+  color: var(--primary-color, #333);
+  width: 50%;
+}
+
+.color-input {
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
 }

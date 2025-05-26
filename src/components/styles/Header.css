@@ -1,6 +1,6 @@
 .header {
-    background-color: #282c34;
-    padding: 20px;
-    color: var(--secondary-color);
-    width: 100vw;
+  background-color: #282c34;
+  padding: 20px;
+  color: var(--background-color);
+  width: 100vw;
 }

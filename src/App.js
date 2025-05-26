@@ -30,17 +30,21 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <Header />
-            <div className="content">
-                {/* Передаем eventData и функцию обновления в EventForm */}
-                <EventForm eventData={eventData} setEventData={setEventData} updateEventData={updateEventData} />
+      <div className="App">
+        <Header />
+        <div className="content">
+          {/* Передаем eventData и функцию обновления в EventForm */}
+          <EventForm
+            eventData={eventData}
+            setEventData={setEventData}
+            updateEventData={updateEventData}
+          />
 
-                {/* Передаем данные и imagePreviewUrl в EventPreview */}
-                <EventPreview eventData={eventData} />
-            </div>
-            <Footer />
+          {/* Передаем данные и imagePreviewUrl в EventPreview */}
+          <EventPreview eventData={eventData} />
         </div>
+        <Footer />
+      </div>
     );
 }
 

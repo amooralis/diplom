@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/EventForm.css";
 import "./styles/Buttons.css";
 import UploadingSponsors from "./UploadingSponsors";
@@ -12,7 +12,7 @@ function EventForm({ eventData, setEventData, updateEventData }) {
     if (savedData) {
       setEventData(JSON.parse(savedData));
     }
-  }, []);
+  }, [setEventData]); // Добавлено 'setEventData' в зависимости
 
   useEffect(() => {
     localStorage.setItem("eventData", JSON.stringify(eventData));
@@ -20,8 +20,9 @@ function EventForm({ eventData, setEventData, updateEventData }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (name.includes("coordinates.")) {
-      const [_, key] = name.split(".");
+      const key = name.split(".")[1];
       setEventData((prevData) => ({
         ...prevData,
         coordinates: {
@@ -29,6 +30,9 @@ function EventForm({ eventData, setEventData, updateEventData }) {
           [key]: value,
         },
       }));
+    } else if (e.target.type === "date") {
+      const formattedDate = value.split("-").reverse().join(".");
+      updateEventData({ [name]: formattedDate });
     } else {
       updateEventData({ [name]: value });
     }
@@ -63,6 +67,17 @@ function EventForm({ eventData, setEventData, updateEventData }) {
     dateEnd,
     coordinates,
   } = eventData;
+
+  const [color, setColor] = useState(
+    eventData.color || ["#000000", "#ffffff", "#007bff", "#ff5722", "#4caf50"]
+  );
+
+  const handleColorChange = (e, i) => {
+    const newColor = [...color];
+    newColor[i] = e.target.value;
+    setColor(newColor);
+    updateEventData({ color: newColor });
+  };
 
   const handleGeneratePage = (e) => {
     e.preventDefault();
@@ -120,6 +135,12 @@ function EventForm({ eventData, setEventData, updateEventData }) {
     newWindow.document.close();
   };
 
+  const formatDateForInput = (date) => {
+    if (!date) return ""; // Если дата отсутствует
+    const [day, month, year] = date.split(".");
+    return `${year}-${month}-${day}`; // Преобразуем в формат гггг-мм-дд
+  };
+
   return (
     <div className="create">
       <form className="form">
@@ -137,18 +158,18 @@ function EventForm({ eventData, setEventData, updateEventData }) {
           <label className="form__label">
             <span>Дата начала:</span>
             <input
-              type="text"
+              type="date"
               name="dateStart"
-              value={dateStart}
+              value={formatDateForInput(dateStart)} // Преобразуем дату для отображения
               onChange={handleChange}
             />
           </label>
           <label className="form__label">
             <span>Дата окончания:</span>
             <input
-              type="text"
+              type="date"
               name="dateEnd"
-              value={dateEnd}
+              value={formatDateForInput(dateEnd)} // Преобразуем дату для отображения
               onChange={handleChange}
             />
           </label>
@@ -218,8 +239,71 @@ function EventForm({ eventData, setEventData, updateEventData }) {
 
         <SetSettings eventData={eventData} setEventData={setEventData} />
 
-        
-        <YandexMap coordinates={coordinates} handleChange={handleChange}/>
+        <YandexMap coordinates={coordinates} handleChange={handleChange} />
+
+        <div className="form__container">
+          <h3 className="form__title">Выбор акцентных цветов</h3>
+          <table className="color-table">
+            <tbody>
+              <tr>
+                <td className="color-table__label">Основной цвет текста:</td>
+                <td>
+                  <input
+                    type="color"
+                    className="color-input"
+                    value={color[0]}
+                    onChange={(e) => handleColorChange(e, 0)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="color-table__label">Фоновый цвет:</td>
+                <td>
+                  <input
+                    type="color"
+                    className="color-input"
+                    value={color[1]}
+                    onChange={(e) => handleColorChange(e, 1)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="color-table__label">Цвет акцентов (заголовки, ссылки):</td>
+                <td>
+                  <input
+                    type="color"
+                    className="color-input"
+                    value={color[2]}
+                    onChange={(e) => handleColorChange(e, 2)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="color-table__label">Цвет кнопок:</td>
+                <td>
+                  <input
+                    type="color"
+                    className="color-input"
+                    value={color[3]}
+                    onChange={(e) => handleColorChange(e, 3)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="color-table__label">Цвет рамок:</td>
+                <td>
+                  <input
+                    type="color"
+                    className="color-input"
+                    value={color[4]}
+                    onChange={(e) => handleColorChange(e, 4)}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="form__container"></div>
 
         <button type="button" onClick={handleGeneratePage}>
           Generate Page
